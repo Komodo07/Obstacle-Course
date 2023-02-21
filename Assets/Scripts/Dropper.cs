@@ -15,7 +15,7 @@ public class Dropper : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         isVisible = GetComponent<MeshRenderer>();
         isVisible.enabled = false;
-    }
+    }    
 
     // Update is called once per frame
     void Update()
