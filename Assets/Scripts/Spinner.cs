@@ -2,20 +2,11 @@ using UnityEngine;
 
 public class Spinner : MonoBehaviour
 {
-    [SerializeField] float xValue;
-    [SerializeField] float yValue;
-    [SerializeField] float zValue;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] float rotationSpeed;       
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Vector3 rotation = new Vector3(xValue, yValue, zValue) * Time.deltaTime;
-        transform.Rotate(rotation);
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 }
