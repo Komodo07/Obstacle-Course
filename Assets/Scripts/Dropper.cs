@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Dropper : MonoBehaviour
 {
-    Rigidbody rigidbody;
+    Rigidbody rb;
     MeshRenderer meshRenderer;
-    float timeToWait = 5.0f;
+    float timeToWait;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,24 +12,30 @@ public class Dropper : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
 
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > timeToWait)
+        /*if (Time.time > timeToWait)
         {
             meshRenderer.enabled = true;
-            rigidbody.useGravity = true;
-        }
+            rb.useGravity = true;
+        }*/
     }
 
-    private void OnCollisionEnter(Collision other)
+    public void EnableObstacle()
+    {
+        meshRenderer.enabled = true;
+        rb.useGravity = true;        
+    }
+
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Ground")
         {
-            rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }
