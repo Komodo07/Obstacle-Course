@@ -13,17 +13,7 @@ public class Dropper : MonoBehaviour
         meshRenderer.enabled = false;
 
         rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (Time.time > timeToWait)
-        {
-            meshRenderer.enabled = true;
-            rb.useGravity = true;
-        }*/
-    }
+    }    
 
     public void EnableObstacle()
     {
@@ -33,7 +23,7 @@ public class Dropper : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Exempt")
         {
             rb.constraints = RigidbodyConstraints.FreezeAll;
         }
